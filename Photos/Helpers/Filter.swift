@@ -10,7 +10,7 @@ import Foundation
 
 class Filter {
     
-    static func selectUserPhotos(_ albums: [Album], _ photos: [Photo], _ user: User) -> [Photo] {
+    static func selectPhotosOfUser(_ albums: [Album], _ photos: [Photo], _ user: User) -> [Photo] {
         var photosOfUser: [Photo] = []
         for album in albums {
             if album.userId == user.id {

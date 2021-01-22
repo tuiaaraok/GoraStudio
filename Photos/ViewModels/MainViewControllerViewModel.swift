@@ -10,19 +10,12 @@ import Foundation
 
 class MainViewControllerViewModel: MainViewControllerViewModelType {
     
-    private var urlString = "https://jsonplaceholder.typicode.com/users"
     private var users: [User]?
     var selectedIndexPath: IndexPath?
+    var dataFetcherService = DataFetcherService()
     
     init() {
-        getData()
-    }
-    
-    private func getData() {
-        DataFetcher.shared.fetchData(url: urlString, completion: fetch(users:))
-    }
-    private func fetch(users: [User]) {
-        DispatchQueue.main.async {
+        dataFetcherService.fetchUsers { (users) in
             self.users = users
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
         }

@@ -16,7 +16,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var container: UIView!
     
     var imageDataFetcher = ImageDataFetcher()
-    
+   
     weak var viewModel: DetailCollectionViewCellViewModelType? {
         willSet(viewModel) {
             guard let viewModel = viewModel else { return }

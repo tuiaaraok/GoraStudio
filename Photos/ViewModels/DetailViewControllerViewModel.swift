@@ -10,31 +10,20 @@ import Foundation
 
 class DetailViewControllerViewModel: DetailViewControllerViewModelType {
     
-    private var albumsUrlString = "https://jsonplaceholder.typicode.com/albums"
-    private var photosUrlString = "https://jsonplaceholder.typicode.com/photos"
     private var photos: [Photo]?
     private var albums: [Album]?
     private var photosOfUser: [Photo] = []
     var user: User?
+    var dataFetcherService = DataFetcherService()
     
     init(user: User) {
         self.user = user
-        getAlbums()
-        getPhotos()
-    }
-    
-    private func getAlbums() {
-        DataFetcher.shared.fetchData(url: albumsUrlString) { (albums) in
+       
+        dataFetcherService.fetchAlbums { (albums) in
             self.albums = albums
         }
-    }
-    
-    private func getPhotos() {
-        DataFetcher.shared.fetchData(url: photosUrlString, completion: fetch(photos:))
-    }
-    
-    private func fetch(photos: [Photo]) {
-        DispatchQueue.main.async {
+        
+        dataFetcherService.fetchPhotos { (photos) in
             self.photos = photos
             self.getPhotosOfUser()
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadCollectionView"), object: nil)
@@ -44,7 +33,7 @@ class DetailViewControllerViewModel: DetailViewControllerViewModelType {
     private func getPhotosOfUser() {
         DispatchQueue.main.async {
             guard let albums = self.albums, let photos = self.photos, let user = self.user else { return  }
-            self.photosOfUser = Filter.selectUserPhotos(albums, photos, user)
+            self.photosOfUser = Filter.selectPhotosOfUser(albums, photos, user)
         }
     }
     

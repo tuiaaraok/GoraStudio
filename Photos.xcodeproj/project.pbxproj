@@ -12,6 +12,7 @@
 		6319699E25BAF34600F8D310 /* ImageDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6319699D25BAF34600F8D310 /* ImageDataFetcher.swift */; };
 		631969A025BAF3C800F8D310 /* Cashe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6319699F25BAF3C800F8D310 /* Cashe.swift */; };
 		631969A325BAFE1000F8D310 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631969A225BAFE0F00F8D310 /* Filter.swift */; };
+		631969A525BB670C00F8D310 /* DataFetcherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631969A425BB670C00F8D310 /* DataFetcherService.swift */; };
 		63F8D8F825B9D0DD000618CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F8D8F725B9D0DD000618CE /* AppDelegate.swift */; };
 		63F8D8FA25B9D0DD000618CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F8D8F925B9D0DD000618CE /* SceneDelegate.swift */; };
 		63F8D8FC25B9D0DD000618CE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F8D8FB25B9D0DD000618CE /* MainViewController.swift */; };
@@ -39,6 +40,7 @@
 		6319699D25BAF34600F8D310 /* ImageDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataFetcher.swift; sourceTree = "<group>"; };
 		6319699F25BAF3C800F8D310 /* Cashe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cashe.swift; sourceTree = "<group>"; };
 		631969A225BAFE0F00F8D310 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		631969A425BB670C00F8D310 /* DataFetcherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcherService.swift; sourceTree = "<group>"; };
 		63F8D8F425B9D0DD000618CE /* Photos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63F8D8F725B9D0DD000618CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63F8D8F925B9D0DD000618CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				63F8D91825B9D490000618CE /* DataFetcher.swift */,
 				6319699D25BAF34600F8D310 /* ImageDataFetcher.swift */,
+				631969A425BB670C00F8D310 /* DataFetcherService.swift */,
 				6319699F25BAF3C800F8D310 /* Cashe.swift */,
 			);
 			path = Networking;
@@ -261,6 +264,7 @@
 				63F8D91325B9D32A000618CE /* MainViewControllerViewModelType.swift in Sources */,
 				63F8D91125B9D318000618CE /* MainViewControllerViewModel.swift in Sources */,
 				63F8D8FC25B9D0DD000618CE /* MainViewController.swift in Sources */,
+				631969A525BB670C00F8D310 /* DataFetcherService.swift in Sources */,
 				63F8D91525B9D414000618CE /* DetailViewController.swift in Sources */,
 				6319699925BAEC1400F8D310 /* Album.swift in Sources */,
 				631969A325BAFE1000F8D310 /* Filter.swift in Sources */,
