@@ -10,11 +10,15 @@ import Foundation
 
 class MainViewControllerViewModel: MainViewControllerViewModelType {
     
-    var urlString = "https://jsonplaceholder.typicode.com/users"
+    private var urlString = "https://jsonplaceholder.typicode.com/users"
+    private var users: [User]?
     var selectedIndexPath: IndexPath?
-    var users: [User]?
     
-    func getData() {
+    init() {
+        getData()
+    }
+    
+    private func getData() {
         DataFetcher.shared.fetchData(url: urlString, completion: fetch(users:))
     }
     private func fetch(users: [User]) {
@@ -32,12 +36,17 @@ class MainViewControllerViewModel: MainViewControllerViewModelType {
     func cellViewModel(forIndexPath indexPath: IndexPath) -> UserCellViewModelType? {
         guard let users = users else { return nil }
         let user = users[indexPath.row]
-        print(user.name)
         return UserCellViewModel(user: user)
     }
     
     func selectRow(atIndexPath indexPath: IndexPath) {
          self.selectedIndexPath = indexPath
+    }
+    
+    func detailVCViewModel(forIndexPath indexPath: IndexPath) -> DetailViewControllerViewModelType? {
+        guard let users = users else { return nil }
+        let user = users[indexPath.row]
+        return DetailViewControllerViewModel(user: user)
     }
 }
 

@@ -12,13 +12,3 @@ struct User: Decodable {
     let id: Int
     let name: String
 }
-
-struct Album: Decodable {
-    let userId: Int
-    let id: Int
-}
-
-struct Photo: Decodable {
-    let albumId: Int
-    let title: String
-}

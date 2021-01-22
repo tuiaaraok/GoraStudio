@@ -9,17 +9,17 @@
 import Foundation
 
 class DataFetcher {
+    
     static var shared = DataFetcher()
        
-    func fetchData(url: String, completion: @escaping ([User]) -> ()) {
+    func fetchData<T: Decodable>(url: String, completion: @escaping ([T]) -> ()) {
         guard let url = URL(string: url) else { return }
         URLSession.shared.dataTask(with: url) { (data, _, _) in
             guard let data = data else { return }
             do {
-                let users = try JSONDecoder().decode([User].self, from: data)
+                let dataArray = try JSONDecoder().decode([T].self, from: data)
                 DispatchQueue.main.async {
-                    completion(users)
-//                    print(users.first?.name)
+                    completion(dataArray)
                 }
             }
             catch let error {

@@ -10,9 +10,8 @@ import Foundation
 
 protocol MainViewControllerViewModelType {
     var selectedIndexPath: IndexPath? { get }
-    func getData()
     func numberOfRows() -> Int
     func selectRow(atIndexPath indexPath: IndexPath)
     func cellViewModel(forIndexPath indexPath: IndexPath) -> UserCellViewModelType?
-//    func detailVCViewModel(forIndexPath indexPath: IndexPath) -> TeamDetailVCViewModelType?
+    func detailVCViewModel(forIndexPath indexPath: IndexPath) -> DetailViewControllerViewModelType?
 }

@@ -18,7 +18,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MainViewControllerViewModel()
-        viewModel?.getData()
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: NSNotification.Name(rawValue: "reload"), object: nil)
         configureActivityIndicator()
     }
@@ -33,6 +32,15 @@ class MainViewController: UIViewController {
     private func configureActivityIndicator() {
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "showDetail", let viewModel = viewModel else { return }
+        guard let detailVC = segue.destination as? DetailViewController else { return }
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        detailVC.viewModel = viewModel.detailVCViewModel(forIndexPath: indexPath)
     }
 }
 
@@ -49,5 +57,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let cellViewModel = viewModel.cellViewModel(forIndexPath: indexPath)
         cell.viewModel = cellViewModel
         return cell
+    }
+}
+
+extension MainViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width - 30, height: 400)
     }
 }
